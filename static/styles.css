@@ -35,18 +35,22 @@ body {
 .crown-container {
     display: none;
     position: absolute;
-    top: -120px; /* Adjusted to be above the Correct!! text */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 100px;
+    top: -60px;
+    width: 50px;
+    height: 50px;
     z-index: 20;
     animation: bounce 2s infinite;
+}
+#left-crown {
+    left: calc(50% - 140px); /* Position to the left of the text */
+}
+#right-crown {
+    left: calc(50% + 90px); /* Position to the right of the text */
 }
 .correct-text {
     display: none;
     position: absolute;
-    top: -60px; /* Adjusted to be below the crown */
+    top: -60px; /* Position to be centered with the crowns */
     left: 50%;
     transform: translateX(-50%);
     font-size: 2em; /* Adjusted to match the header size */
@@ -91,13 +95,13 @@ button:hover {
 }
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
-        transform: translateX(-50%) translateY(0);
+        transform: translateY(0);
     }
     40% {
-        transform: translateX(-50%) translateY(-30px);
+        transform: translateY(-30px);
     }
     60% {
-        transform: translateX(-50%) translateY(-15px);
+        transform: translateY(-15px);
     }
 }
 form {

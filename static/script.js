@@ -9,7 +9,8 @@ async function fetchRandomFrame() {
             const frame = document.getElementById('frame');
             frame.src = data.frame_url;
             frame.dataset.episodeTitle = data.episode_title;
-            document.getElementById('crown-container').style.display = 'none';
+            document.getElementById('left-crown').style.display = 'none';
+            document.getElementById('right-crown').style.display = 'none';
             document.getElementById('correct-text').style.display = 'none';
             document.getElementById('result').textContent = '';
             document.getElementById('guess').value = ''; // Clear the input field
@@ -40,7 +41,8 @@ document.getElementById('guess-form').addEventListener('submit', async (event) =
         const result = await response.json();
         if (result.correct) {
             document.getElementById('result').textContent = '';
-            document.getElementById('crown-container').style.display = 'block';
+            document.getElementById('left-crown').style.display = 'block';
+            document.getElementById('right-crown').style.display = 'block';
             document.getElementById('correct-text').style.display = 'block';
             document.getElementById('correct-text').textContent = 'Correct!!'; // Ensure only one "Correct!!" text
             document.getElementById('quiz-title').textContent = ''; // Clear the header to avoid duplication
