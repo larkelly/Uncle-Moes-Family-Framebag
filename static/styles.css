@@ -1,0 +1,137 @@
+@font-face {
+    font-family: 'SimpsonsFont';
+    src: url('fonts/simpsonsFont.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 20px;
+    height: 100vh;
+    font-family: 'SimpsonsFont', 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    text-align: center; /* Ensure all text is centered */
+}
+.container {
+    position: relative;
+    width: 580px;
+    margin-bottom: 20px;
+}
+.image-container {
+    width: 100%;
+    border: 2px solid #ccc;
+    background-color: #fff;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.image-container img {
+    width: 100%;
+    height: auto;
+}
+.crown-container {
+    display: none;
+    position: absolute;
+    top: -120px; /* Adjusted to be above the Correct!! text */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 100px;
+    z-index: 20;
+    animation: bounce 2s infinite;
+}
+.correct-text {
+    display: none;
+    position: absolute;
+    top: -60px; /* Adjusted to be below the crown */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2em; /* Adjusted to match the header size */
+    font-family: 'SimpsonsFont', 'Arial', sans-serif;
+    font-weight: bold;
+    color: green;
+    z-index: 20;
+    text-align: center;
+}
+#attempts-container {
+    font-size: 2em; /* Made the font size larger */
+    margin-bottom: 20px;
+}
+#game-over {
+    font-size: 2em; /* Match the font size with attempts */
+    color: red;
+    text-align: center;
+}
+#game-over.hidden {
+    display: none;
+}
+#result {
+    font-size: 2em; /* Match the font size with attempts */
+    color: red;
+    text-align: center;
+}
+button {
+    font-family: 'SimpsonsFont', 'Arial', sans-serif; /* Use Simpsons font for all buttons */
+    font-size: 18px; /* Match the font size with the "Submit Guess" button */
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+button:hover {
+    background-color: #0056b3;
+}
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-30px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-15px);
+    }
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    width: 580px;
+}
+input[type="text"], button {
+    font-size: 18px;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+button {
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+button:hover {
+    background-color: #0056b3;
+}
+h1 {
+    margin-bottom: 20px;
+    font-family: 'SimpsonsFont', 'Arial', sans-serif;
+    font-size: 2em;
+}
+.hidden {
+    display: none;
+}
+p {
+    margin-top: 20px;
+}

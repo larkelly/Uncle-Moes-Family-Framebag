@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simpsons Episode Quiz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1 id="quiz-title">Guess the Simpsons Episode</h1>
+    <div class="container">
+        <div id="crown-container" class="crown-container">
+            <img src="{{ url_for('static', filename='images/crown.png') }}" alt="Crown" style="width: 100%; height: 100%;">
+        </div>
+        <div id="correct-text" class="correct-text"></div>
+        <div class="image-container">
+            <img id="frame" src="" alt="Random Frame">
+        </div>
+    </div>
+    <div id="attempts-container">Attempts: <span id="attempts">3</span></div>
+    <form id="guess-form">
+        <input type="text" id="guess" placeholder="Enter episode name" aria-label="Episode guess">
+        <button type="submit">Submit Guess</button>
+        <button type="button" id="next-frame">Next Frame</button>
+    </form>
+    <p id="result" aria-live="polite"></p>
+    <div id="game-over" class="hidden">
+        Game Over!
+        <button id="try-again">Try Again</button>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
