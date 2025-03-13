@@ -9,19 +9,8 @@
 <body>
 <h2 id="quiz-subtitle">What episode is this<span class="question-mark">?</span></h2>
 
-<!-- Game Over Text -->
-<div id="game-over" class="hidden">
-    Game Over!
-</div>
-
 <div class="container">
-    <div id="left-crown" class="crown-container">
-        <img src="{{ url_for('static', filename='images/crown.png') }}" alt="Crown" style="width: 100%; height: 100%;">
-    </div>
     <div id="correct-text" class="correct-text">Correct!!</div>
-    <div id="right-crown" class="crown-container">
-        <img src="{{ url_for('static', filename='images/crown.png') }}" alt="Crown" style="width: 100%; height: 100%;">
-    </div>
     <div class="image-container">
         <img id="frame" src="" alt="Random Frame">
         <div id="incorrect-animation">X</div> <!-- X animation within the image -->
@@ -29,8 +18,8 @@
 </div>
 
 <div id="info-container">
-    <div id="current-turn-container">
-        <p id="current-turn">Turn: 1 OF 5</p>
+    <div id="current-frame-container">
+        <p id="current-frame">Frame: 1 OF 5</p>
     </div>
     <div id="attempts-container">Attempts: <span id="attempts">3</span></div>
     <div id="points-container">
@@ -46,6 +35,7 @@
         <button id="hint">Hint</button>
         <button id="double-points">Double Points</button>
     </div>
+    <br>
 </div>
 
 <!-- Episode Info -->
@@ -68,6 +58,10 @@
 <!-- Try Again Button after Game Over -->
 <div id="try-again-container" class="hidden">
     <button id="try-again">Try Again</button>
+</div>
+
+<div id="game-over" class="hidden">
+    Game Over!
 </div>
 
 <script src="{{ url_for('static', filename='script.js') }}"></script>

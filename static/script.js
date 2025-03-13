@@ -8,31 +8,35 @@ async function fetchRandomFrame() {
     try {
         const response = await fetch('/random-frame');
         const data = await response.json();
-        console.log('Random Frame Data:', data); // Log the data to see the URL
-        if (data.frame_url) {
-            const frame = document.getElementById('frame');
-            frame.src = data.frame_url;
-            frame.dataset.episodeTitle = data.episode_title;
-            frame.dataset.seasonNumber = data.season_number;
-            frame.dataset.episodeNumber = data.episode_number;
 
-            document.getElementById('left-crown').style.display = 'none';
-            document.getElementById('right-crown').style.display = 'none';
+        if (data.Frame && data.Frame.Timestamp) {
+            const frame = document.getElementById('frame');
+            const frameUrl = `https://frinkiac.com/img/${data.Episode.Key}/${data.Frame.Timestamp}.jpg`;
+            frame.src = frameUrl;
+            frame.dataset.episodeTitle = data.Episode.Title;
+            frame.dataset.seasonNumber = data.Episode.Season;
+            frame.dataset.episodeNumber = data.Episode.EpisodeNumber;
+
             document.getElementById('correct-text').style.display = 'none';
-            document.getElementById('result').textContent = '';
-            document.getElementById('result').classList.remove('incorrect-text'); // Remove incorrect styling when resetting
+            const resultElement = document.getElementById('result');
+            if (resultElement) {
+                resultElement.textContent = '';
+                resultElement.classList.remove('incorrect-text'); // Remove incorrect styling when resetting
+            }
             document.getElementById('guess').value = ''; // Clear the input field
-            document.getElementById('quiz-title').textContent = 'Uncle Moes Family Framebag'; // Reset the header
-            document.getElementById('attempts').textContent = attempts; // Update attempts
+            document.getElementById('attempts').textContent = attempts.toString(); // Update attempts
 
             // Show the subtitle and hide other elements
             document.getElementById('quiz-subtitle').classList.remove('hidden');
             document.getElementById('episode-info').classList.add('hidden');
             document.getElementById('try-again-container').style.display = 'none'; // Hide the try again button
-            document.getElementById('game-over').classList.add('hidden');
+            document.getElementById('game-over').classList.add('hidden'); // Hide the game over text
             document.getElementById('incorrect-animation').style.display = 'none'; // Hide the incorrect animation
         } else {
-            document.getElementById('result').textContent = 'Error fetching frame';
+            const resultElement = document.getElementById('result');
+            if (resultElement) {
+                resultElement.textContent = 'Error fetching frame';
+            }
         }
     } catch (error) {
         console.error('Error fetching random frame:', error);
@@ -87,16 +91,21 @@ document.getElementById('guess-form').addEventListener('submit', async (event) =
         const result = await response.json();
         if (result.correct) {
             points += 10;
-            document.getElementById('result').textContent = '';
-            document.getElementById('left-crown').style.display = 'block';
-            document.getElementById('right-crown').style.display = 'block';
-            document.getElementById('correct-text').style.display = 'block';
-            document.getElementById('correct-text').textContent = 'Correct!!'; // Ensure only one "Correct!!" text
-            document.getElementById('quiz-title').textContent = ''; // Clear the header to avoid duplication
-            document.getElementById('quiz-subtitle').textContent = ''; // Clear the header to avoid duplication
+            const correctText = document.getElementById('correct-text');
+            correctText.style.display = 'block';
+            correctText.textContent = 'Correct!!';
+            correctText.classList.add('slideIn');
+
+            setTimeout(() => {
+                correctText.style.display = 'none';
+                correctText.classList.remove('slideIn');
+                fetchRandomFrame();
+                currentFrame++;
+                document.getElementById('current-frame').textContent = `Frame: ${currentFrame + 1} OF ${totalFrames}`;
+            }, 2000); // Adjust the timeout to match the animation duration
         } else {
             attempts--;
-            document.getElementById('attempts').textContent = attempts;
+            document.getElementById('attempts').textContent = attempts.toString(); // Update attempts
             if (attempts <= 0) {
                 document.getElementById('game-over').classList.remove('hidden');
                 document.getElementById('quiz-title').classList.add('hidden');
@@ -116,15 +125,16 @@ document.getElementById('guess-form').addEventListener('submit', async (event) =
                 incorrectAnimation.classList.add('showX');
                 setTimeout(() => {
                     incorrectAnimation.style.display = 'none';
+                    fetchRandomFrame();
+                    currentFrame++;
+                    document.getElementById('current-frame').textContent = `Frame: ${currentFrame + 1} OF ${totalFrames}`;
                 }, 1000); // Hide the X after the animation ends
             }
         }
 
         // Check if the round is over
-        currentFrame++;
-        if (currentFrame < totalFrames) {
-            fetchRandomFrame();
-        } else {
+        if (currentFrame >= totalFrames) {
+            document.getElementById('game-over').classList.remove('hidden');
             document.getElementById('result').textContent = `Round over! You scored ${points} points.`;
             document.getElementById('next-frame').style.display = 'none';
             document.getElementById('try-again-container').style.display = 'block'; // Show the try again button
@@ -151,7 +161,7 @@ document.getElementById('try-again').addEventListener('click', () => {
     points = 0;
     currentFrame = 0;
     lifelineUsed = false;
-    document.getElementById('attempts').textContent = attempts;
+    document.getElementById('attempts').textContent = attempts.toString(); // Update attempts
     document.getElementById('game-over').classList.add('hidden');
     document.getElementById('quiz-title').classList.remove('hidden');
     document.getElementById('quiz-subtitle').classList.remove('hidden'); // Show the subtitle when restarting
