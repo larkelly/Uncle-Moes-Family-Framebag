@@ -18,48 +18,73 @@ body {
     align-items: center;
     justify-content: center;
     margin: 0;
-    padding: 20px;
+    padding: 10px;
     height: 100vh;
     font-family: 'SimpsonsFont', 'Arial', sans-serif;
-    background-color: #f4f4f4;
+    background: url('/static/images/clouds.jpg') no-repeat center center fixed;
+    background-size: cover;
     text-align: center;
-    padding-top: 20px; /* Add padding to the top of the body */
-}
-
-#quiz-subtitle {
-    margin-top: 20px; /* Add margin to the top of the subtitle */
-}
-
-.container {
-    position: relative;
-    width: 100%;
-    max-width: 580px;
-    margin-bottom: 20px;
 }
 
 .image-container {
-    width: 100%;
-    border: 2px solid #ccc;
-    background-color: #fff;
-    padding: 10px;
+    padding: 0;
     box-sizing: border-box;
-    position: relative;
+    text-align: center;
 }
 
 .image-container img {
-    width: 100%;
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
     height: auto;
 }
 
+header {
+    width: 100%;
+    background-color: #ffcc00;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #333;
+}
+
+#quiz-subtitle {
+    margin-top: 20px; /* Increase the margin-top to push everything down */
+    font-size: 1em;
+    color: #333;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px; /* Adjust the max-width as needed */
+    margin: 0 auto;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
 #game-over {
-    font-size: 2em;
+    font-size: 1.5em;
     color: red;
     text-align: center;
-    margin-bottom: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none;
 }
 
 #episode-info {
-    font-size: 1.2em;
+    font-size: 1em;
     color: black;
     text-align: center;
 }
@@ -70,10 +95,11 @@ body {
 
 #episode-label {
     font-weight: bold;
+    margin-top: 20px; /* Add margin-top to move it down */
 }
 
 #try-again-container {
-    margin-top: 2px;
+    margin-top: 10px;
     display: none;
     width: 100%;
     display: flex;
@@ -82,16 +108,16 @@ body {
 
 button {
     font-family: 'SimpsonsFont', 'Arial', sans-serif;
-    font-size: 18px;
-    padding: 10px;
+    font-size: 14px;
+    padding: 5px;
     background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    width: calc(100% - 20px);
+    width: calc(100% - 10px);
     box-sizing: border-box;
-    margin-top: 10px;
+    margin-top: 5px;
     max-width: 580px;
 }
 
@@ -107,31 +133,13 @@ button.lifeline-used {
     display: none;
 }
 
-.crown-container {
-    display: none;
-    position: absolute;
-    top: -60px;
-    width: 50px;
-    height: 50px;
-    z-index: 20;
-    animation: bounce 2s infinite;
-}
-
-#left-crown {
-    left: calc(50% - 140px);
-}
-
-#right-crown {
-    left: calc(50% + 90px);
-}
-
 .correct-text {
     display: none;
     position: absolute;
-    top: -60px;
+    top: -30px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 2em;
+    font-size: 1.5em;
     font-family: 'SimpsonsFont', 'Arial', sans-serif;
     font-weight: bold;
     color: green;
@@ -142,15 +150,15 @@ button.lifeline-used {
 form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;
     align-items: center;
     width: 100%;
     max-width: 580px;
 }
 
 input[type="text"] {
-    font-size: 18px;
-    padding: 10px;
+    font-size: 14px;
+    padding: 5px;
     border: 2px solid #ccc;
     border-radius: 5px;
     width: 100%;
@@ -158,28 +166,26 @@ input[type="text"] {
 }
 
 datalist {
-    max-height: 150px;
+    max-height: 100px;
     overflow-y: auto;
 }
+
 h1 {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-family: 'SimpsonsFont', 'Arial', sans-serif;
-    font-size: 2em;
-}
-.hidden {
-    display: none;
-}
-p {
-    margin-top: 20px;
+    font-size: 1.5em;
 }
 
-/* New animation for incorrect guess */
+p {
+    margin-top: 10px;
+}
+
 #incorrect-animation {
     position: absolute;
     top: 48%;
     left: 52%;
     transform: translate(-50%, -50%);
-    font-size: 10em;
+    font-size: 5em;
     color: red;
     font-weight: bold;
     opacity: 0;
@@ -204,12 +210,17 @@ p {
     }
 }
 
-/* Styling for the h2 header */
+#frame {
+    border: 3px solid black; /* Creates a black border */
+    border-radius: 5px; /* Optional: Slightly rounded corners */
+    padding: 2px; /* Optional: Adds a small gap inside the border */
+}
+
 h2#quiz-subtitle {
     font-family: 'SimpsonsFont', 'Arial', sans-serif;
-    font-size: 1.8em;
+    font-size: 1.2em;
     color: black;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .question-mark {
@@ -217,31 +228,22 @@ h2#quiz-subtitle {
 }
 
 .brackets {
-    font-family: 'Arial', sans-serif; /* Use a font that supports brackets */
-    font-size: inherit; /* Ensure the font size matches the surrounding text */
+    font-family: 'Arial', sans-serif;
+    font-size: inherit;
 }
 
-/* Info container styles */
 #info-container {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 560px;
-    margin: 1px 0;
-    padding: 10px;
-    background-color: #f4f4f4;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    background: transparent !important; /* Remove white background */
+    border: none !important; /* Remove border */
+    box-shadow: none !important; /* Remove shadow */
+    padding: 0px !important; /* Remove extra spacing */
 }
 
 #info-container p {
     margin: 0;
-    font-size: 1.2em;
+    font-size: 1em;
 }
 
-/* Media query for mobile devices */
 @media (max-width: 768px) {
     #info-container {
         flex-direction: column;
@@ -249,66 +251,60 @@ h2#quiz-subtitle {
     }
 
     #info-container p {
-        margin-bottom: 10px;
+        margin-bottom: 5px;
     }
 }
 
 #next-frame {
-    padding: 5px 10px; /* Reduce padding to make the button skinny */
-    width: 100%; /* Make the button long */
-    max-width: 580px; /* Ensure it doesn't exceed the container width */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    padding: 5px 10px;
+    width: 100%;
+    max-width: 580px;
+    box-sizing: border-box;
 }
 
 #lifelines h3 {
-    margin-bottom: 10px; /* Reduce the margin to move the text closer to the buttons */
+    margin-bottom: 0; /* Further reduce the margin-bottom to move the buttons closer */
 }
 
 .lifeline-buttons {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     width: 100%;
-    max-width: 580px;
+    max-width: 500px;
     margin: 0 auto;
-}
-
-.lifeline-buttons {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 580px;
-    margin: 0 auto;
+    gap: 5px; /* Reduce the gap if needed */
 }
 
 .lifeline-buttons button {
-    flex: 1;
-    padding: 10px 20px; /* Increase padding to make the buttons bigger */
+    width: 100%;
+    padding: 10px 5px;
     box-sizing: border-box;
-    max-width: 200px; /* Adjust max-width if needed */
-    height: 70px; /* Increase height to make the buttons bigger */
-    font-size: 16px; /* Increase font size */
-    margin: 0 60px; /* Maintain the space between buttons */
+    height: 50px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
 }
 
 #guess-form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;
     align-items: center;
     width: 100%;
     max-width: 580px;
-    margin-top: 10px; /* Adjust margin to move the form up */
+    margin-top: 5px;
 }
 
 #attempts {
-    font-size: 1em; /* Match the font size of other elements in the info container */
+    font-size: 0.8em;
 }
 
 .suggestions {
     position: absolute;
     background-color: white;
     border: 1px solid #ccc;
-    max-height: 150px;
+    max-height: 100px;
     overflow-y: auto;
     width: calc(100% - 22px);
     box-sizing: border-box;
@@ -316,7 +312,7 @@ h2#quiz-subtitle {
 }
 
 .suggestions div {
-    padding: 10px;
+    padding: 5px;
     cursor: pointer;
 }
 
@@ -324,26 +320,47 @@ h2#quiz-subtitle {
     background-color: #f0f0f0;
 }
 
-/* Ensure the frame and elements above it are properly positioned */
-#frame {
-    display: block;
-    margin: 0 auto;
-    max-width: 100%;
-    height: auto;
-}
-
-#guess-form, #quiz-title, #quiz-subtitle, #result, #left-crown, #right-crown, #correct-text, #game-over, #episode-info, #try-again-container {
+#guess-form, #quiz-title, #quiz-subtitle, #result, #game-over, #episode-info, #try-again-container {
     display: block;
     position: relative;
-    z-index: 1; /* Ensure they are on top of other elements */
+    z-index: 1;
 }
 
-/* Ensure the container holding the frame and other elements is properly styled */
 .container {
     position: relative;
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px;
     box-sizing: border-box;
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    50% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+.correct-text {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    font-size: 3em;
+    font-family: 'SimpsonsFont', 'Arial', sans-serif;
+    font-weight: bold;
+    color: green;
+    text-align: center;
+    z-index: 20;
+    animation: slideIn 2s forwards;
 }
