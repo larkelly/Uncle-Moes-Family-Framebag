@@ -7,31 +7,69 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1 id="quiz-title">Guess the Simpsons Episode</h1>
-    <div class="container">
-        <div id="left-crown" class="crown-container">
-            <img src="{{ url_for('static', filename='images/crown.png') }}" alt="Crown" style="width: 100%; height: 100%;">
-        </div>
-        <div id="correct-text" class="correct-text">Correct!!</div>
-        <div id="right-crown" class="crown-container">
-            <img src="{{ url_for('static', filename='images/crown.png') }}" alt="Crown" style="width: 100%; height: 100%;">
-        </div>
-        <div class="image-container">
-            <img id="frame" src="" alt="Random Frame">
-        </div>
+<h2 id="quiz-subtitle">What episode is this<span class="question-mark">?</span></h2>
+
+<!-- Game Over Text -->
+<div id="game-over" class="hidden">
+    Game Over!
+</div>
+
+<div class="container">
+    <div id="left-crown" class="crown-container">
+        <img src="{{ url_for('static', filename='images/crown.png') }}" alt="Crown" style="width: 100%; height: 100%;">
+    </div>
+    <div id="correct-text" class="correct-text">Correct!!</div>
+    <div id="right-crown" class="crown-container">
+        <img src="{{ url_for('static', filename='images/crown.png') }}" alt="Crown" style="width: 100%; height: 100%;">
+    </div>
+    <div class="image-container">
+        <img id="frame" src="" alt="Random Frame">
+        <div id="incorrect-animation">X</div> <!-- X animation within the image -->
+    </div>
+</div>
+
+<div id="info-container">
+    <div id="current-turn-container">
+        <p id="current-turn">Turn: 1 OF 5</p>
     </div>
     <div id="attempts-container">Attempts: <span id="attempts">3</span></div>
-    <form id="guess-form">
-        <input type="text" id="guess" placeholder="Enter episode name" aria-label="Episode guess">
-        <button type="submit">Submit Guess</button>
-        <button type="button" id="next-frame">Next Frame</button>
-    </form>
-    <p id="result" aria-live="polite"></p>
-    <div id="game-over" class="hidden">
-        Game Over!
-        <button id="try-again">Try Again</button>
+    <div id="points-container">
+        <p id="points">Points: 0</p>
     </div>
+</div>
 
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+<!-- Lifelines Section -->
+<div id="lifelines">
+    <h3>Lifelines</h3>
+    <div class="lifeline-buttons">
+        <button id="next-frame">Skip Frame</button>
+        <button id="hint">Hint</button>
+        <button id="double-points">Double Points</button>
+    </div>
+</div>
+
+<!-- Episode Info -->
+<div id="episode-info" class="hidden">
+    <p id="episode-label">Episode</p>
+    <p id="episode-title"></p>
+    <p id="season-episode"></p>
+</div>
+
+<form id="guess-form">
+    <input type="text" id="guess" list="episode-suggestions" placeholder="Enter episode name" aria-label="Episode guess"
+           autocomplete="off">
+    <datalist id="episode-suggestions"></datalist>
+    <button type="submit">Submit Guess</button>
+    <button type="button" id="give-up">Give Up</button>
+</form>
+
+<p id="result" aria-live="polite"></p>
+
+<!-- Try Again Button after Game Over -->
+<div id="try-again-container" class="hidden">
+    <button id="try-again">Try Again</button>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

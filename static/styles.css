@@ -4,6 +4,14 @@
     font-weight: normal;
     font-style: normal;
 }
+
+@font-face {
+    font-family: 'akbarFont';
+    src: url('fonts/akbar.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -14,24 +22,91 @@ body {
     height: 100vh;
     font-family: 'SimpsonsFont', 'Arial', sans-serif;
     background-color: #f4f4f4;
-    text-align: center; /* Ensure all text is centered */
+    text-align: center;
+    padding-top: 20px; /* Add padding to the top of the body */
 }
+
+#quiz-subtitle {
+    margin-top: 20px; /* Add margin to the top of the subtitle */
+}
+
 .container {
     position: relative;
-    width: 580px;
+    width: 100%;
+    max-width: 580px;
     margin-bottom: 20px;
 }
+
 .image-container {
     width: 100%;
     border: 2px solid #ccc;
     background-color: #fff;
     padding: 10px;
     box-sizing: border-box;
+    position: relative;
 }
+
 .image-container img {
     width: 100%;
     height: auto;
 }
+
+#game-over {
+    font-size: 2em;
+    color: red;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#episode-info {
+    font-size: 1.2em;
+    color: black;
+    text-align: center;
+}
+
+#episode-info p {
+    margin: 0;
+}
+
+#episode-label {
+    font-weight: bold;
+}
+
+#try-again-container {
+    margin-top: 2px;
+    display: none;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    font-family: 'SimpsonsFont', 'Arial', sans-serif;
+    font-size: 18px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: calc(100% - 20px);
+    box-sizing: border-box;
+    margin-top: 10px;
+    max-width: 580px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button.lifeline-used {
+    background-color: red;
+}
+
+.hidden {
+    display: none;
+}
+
 .crown-container {
     display: none;
     position: absolute;
@@ -41,77 +116,39 @@ body {
     z-index: 20;
     animation: bounce 2s infinite;
 }
+
 #left-crown {
-    left: calc(50% - 140px); /* Position to the left of the text */
+    left: calc(50% - 140px);
 }
+
 #right-crown {
-    left: calc(50% + 90px); /* Position to the right of the text */
+    left: calc(50% + 90px);
 }
+
 .correct-text {
     display: none;
     position: absolute;
-    top: -60px; /* Position to be centered with the crowns */
+    top: -60px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 2em; /* Adjusted to match the header size */
+    font-size: 2em;
     font-family: 'SimpsonsFont', 'Arial', sans-serif;
     font-weight: bold;
     color: green;
     z-index: 20;
     text-align: center;
 }
-#attempts-container {
-    font-size: 2em; /* Made the font size larger */
-    margin-bottom: 20px;
-}
-#game-over {
-    font-size: 2em; /* Match the font size with attempts */
-    color: red;
-    text-align: center;
-}
-#game-over.hidden {
-    display: none;
-}
-#result {
-    font-size: 2em; /* Match the font size with attempts */
-    color: red;
-    text-align: center;
-}
-button {
-    font-family: 'SimpsonsFont', 'Arial', sans-serif; /* Use Simpsons font for all buttons */
-    font-size: 18px; /* Match the font size with the "Submit Guess" button */
-    padding: 10px;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    width: 100%;
-    box-sizing: border-box;
-    cursor: pointer;
-    background-color: #007bff;
-    color: #fff;
-    transition: background-color 0.3s ease;
-}
-button:hover {
-    background-color: #0056b3;
-}
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-    }
-    40% {
-        transform: translateY(-30px);
-    }
-    60% {
-        transform: translateY(-15px);
-    }
-}
+
 form {
     display: flex;
     flex-direction: column;
     gap: 10px;
     align-items: center;
-    width: 580px;
+    width: 100%;
+    max-width: 580px;
 }
-input[type="text"], button {
+
+input[type="text"] {
     font-size: 18px;
     padding: 10px;
     border: 2px solid #ccc;
@@ -119,14 +156,10 @@ input[type="text"], button {
     width: 100%;
     box-sizing: border-box;
 }
-button {
-    cursor: pointer;
-    background-color: #007bff;
-    color: #fff;
-    transition: background-color 0.3s ease;
-}
-button:hover {
-    background-color: #0056b3;
+
+datalist {
+    max-height: 150px;
+    overflow-y: auto;
 }
 h1 {
     margin-bottom: 20px;
@@ -138,4 +171,179 @@ h1 {
 }
 p {
     margin-top: 20px;
+}
+
+/* New animation for incorrect guess */
+#incorrect-animation {
+    position: absolute;
+    top: 48%;
+    left: 52%;
+    transform: translate(-50%, -50%);
+    font-size: 10em;
+    color: red;
+    font-weight: bold;
+    opacity: 0;
+    z-index: 30;
+    pointer-events: none;
+    animation: showX 1s forwards;
+    display: none;
+}
+
+@keyframes showX {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) translate(-50%, -50%);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2) translate(-50%, -50%);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1) translate(-50%, -50%);
+    }
+}
+
+/* Styling for the h2 header */
+h2#quiz-subtitle {
+    font-family: 'SimpsonsFont', 'Arial', sans-serif;
+    font-size: 1.8em;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.question-mark {
+    font-family: 'akbarFont', 'Arial', sans-serif;
+}
+
+.brackets {
+    font-family: 'Arial', sans-serif; /* Use a font that supports brackets */
+    font-size: inherit; /* Ensure the font size matches the surrounding text */
+}
+
+/* Info container styles */
+#info-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 560px;
+    margin: 1px 0;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#info-container p {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+    #info-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #info-container p {
+        margin-bottom: 10px;
+    }
+}
+
+#next-frame {
+    padding: 5px 10px; /* Reduce padding to make the button skinny */
+    width: 100%; /* Make the button long */
+    max-width: 580px; /* Ensure it doesn't exceed the container width */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+#lifelines h3 {
+    margin-bottom: 10px; /* Reduce the margin to move the text closer to the buttons */
+}
+
+.lifeline-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 580px;
+    margin: 0 auto;
+}
+
+.lifeline-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 580px;
+    margin: 0 auto;
+}
+
+.lifeline-buttons button {
+    flex: 1;
+    padding: 10px 20px; /* Increase padding to make the buttons bigger */
+    box-sizing: border-box;
+    max-width: 200px; /* Adjust max-width if needed */
+    height: 70px; /* Increase height to make the buttons bigger */
+    font-size: 16px; /* Increase font size */
+    margin: 0 60px; /* Maintain the space between buttons */
+}
+
+#guess-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+    max-width: 580px;
+    margin-top: 10px; /* Adjust margin to move the form up */
+}
+
+#attempts {
+    font-size: 1em; /* Match the font size of other elements in the info container */
+}
+
+.suggestions {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    max-height: 150px;
+    overflow-y: auto;
+    width: calc(100% - 22px);
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+.suggestions div {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.suggestions div:hover {
+    background-color: #f0f0f0;
+}
+
+/* Ensure the frame and elements above it are properly positioned */
+#frame {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+}
+
+#guess-form, #quiz-title, #quiz-subtitle, #result, #left-crown, #right-crown, #correct-text, #game-over, #episode-info, #try-again-container {
+    display: block;
+    position: relative;
+    z-index: 1; /* Ensure they are on top of other elements */
+}
+
+/* Ensure the container holding the frame and other elements is properly styled */
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
 }

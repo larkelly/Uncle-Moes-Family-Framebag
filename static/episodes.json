@@ -1,0 +1,872 @@
+{
+  "season_2": [
+    {
+      "episode": "S02E01",
+      "title": "Bart Gets an F"
+    },
+    {
+      "episode": "S02E02",
+      "title": "Simpson and Delilah"
+    },
+    {
+      "episode": "S02E03",
+      "title": "Treehouse of Horror"
+    },
+    {
+      "episode": "S02E04",
+      "title": "Two Cars in Every Garage and Three Eyes on Every Fish"
+    },
+    {
+      "episode": "S02E05",
+      "title": "Dancin' Homer"
+    },
+    {
+      "episode": "S02E06",
+      "title": "Dead Putting Society"
+    },
+    {
+      "episode": "S02E07",
+      "title": "Bart vs. Thanksgiving"
+    },
+    {
+      "episode": "S02E08",
+      "title": "Bart the Daredevil"
+    },
+    {
+      "episode": "S02E09",
+      "title": "Itchy & Scratchy & Marge"
+    },
+    {
+      "episode": "S02E10",
+      "title": "Bart Gets Hit by a Car"
+    },
+    {
+      "episode": "S02E11",
+      "title": "One Fish, Two Fish, Blowfish, Blue Fish"
+    },
+    {
+      "episode": "S02E12",
+      "title": "The Way We Was"
+    },
+    {
+      "episode": "S02E13",
+      "title": "Homer vs. Lisa and the 8th Commandment"
+    },
+    {
+      "episode": "S02E14",
+      "title": "Principal Charming"
+    },
+    {
+      "episode": "S02E15",
+      "title": "Oh Brother, Where Art Thou?"
+    },
+    {
+      "episode": "S02E16",
+      "title": "Bart's Dog Gets an F"
+    },
+    {
+      "episode": "S02E17",
+      "title": "Old Money"
+    },
+    {
+      "episode": "S02E18",
+      "title": "Brush with Greatness"
+    },
+    {
+      "episode": "S02E19",
+      "title": "Lisa's Substitute"
+    },
+    {
+      "episode": "S02E20",
+      "title": "The War of the Simpsons"
+    },
+    {
+      "episode": "S02E21",
+      "title": "Three Men and a Comic Book"
+    },
+    {
+      "episode": "S02E22",
+      "title": "Blood Feud"
+    }
+  ],
+  "season_3": [
+    {
+      "episode": "S03E01",
+      "title": "Stark Raving Dad"
+    },
+    {
+      "episode": "S03E02",
+      "title": "Mr. Lisa Goes to Washington"
+    },
+    {
+      "episode": "S03E03",
+      "title": "When Flanders Failed"
+    },
+    {
+      "episode": "S03E04",
+      "title": "Bart the Murderer"
+    },
+    {
+      "episode": "S03E05",
+      "title": "Homer Defined"
+    },
+    {
+      "episode": "S03E06",
+      "title": "Like Father, Like Clown"
+    },
+    {
+      "episode": "S03E07",
+      "title": "Treehouse of Horror II"
+    },
+    {
+      "episode": "S03E08",
+      "title": "Lisa's Pony"
+    },
+    {
+      "episode": "S03E09",
+      "title": "Saturdays of Thunder"
+    },
+    {
+      "episode": "S03E10",
+      "title": "Flaming Moe's"
+    },
+    {
+      "episode": "S03E11",
+      "title": "Burns Verkaufen der Kraftwerk"
+    },
+    {
+      "episode": "S03E12",
+      "title": "I Married Marge"
+    },
+    {
+      "episode": "S03E13",
+      "title": "Radio Bart"
+    },
+    {
+      "episode": "S03E14",
+      "title": "Lisa the Greek"
+    },
+    {
+      "episode": "S03E15",
+      "title": "Homer Alone"
+    },
+    {
+      "episode": "S03E16",
+      "title": "Bart the Lover"
+    },
+    {
+      "episode": "S03E17",
+      "title": "Homer at the Bat"
+    },
+    {
+      "episode": "S03E18",
+      "title": "Separate Vocations"
+    },
+    {
+      "episode": "S03E19",
+      "title": "Dog of Death"
+    },
+    {
+      "episode": "S03E20",
+      "title": "Colonel Homer"
+    },
+    {
+      "episode": "S03E21",
+      "title": "Black Widower"
+    },
+    {
+      "episode": "S03E22",
+      "title": "The Otto Show"
+    },
+    {
+      "episode": "S03E23",
+      "title": "Bart's Friend Falls in Love"
+    },
+    {
+      "episode": "S03E24",
+      "title": "Brother, Can You Spare Two Dimes?"
+    }
+  ],
+  "season_4": [
+    {
+      "episode": "S04E01",
+      "title": "Kamp Krusty"
+    },
+    {
+      "episode": "S04E02",
+      "title": "A Streetcar Named Marge"
+    },
+    {
+      "episode": "S04E03",
+      "title": "Homer the Heretic"
+    },
+    {
+      "episode": "S04E04",
+      "title": "Lisa the Beauty Queen"
+    },
+    {
+      "episode": "S04E05",
+      "title": "Treehouse of Horror III"
+    },
+    {
+      "episode": "S04E06",
+      "title": "Itchy & Scratchy: The Movie"
+    },
+    {
+      "episode": "S04E07",
+      "title": "Marge Gets a Job"
+    },
+    {
+      "episode": "S04E08",
+      "title": "New Kid on the Block"
+    },
+    {
+      "episode": "S04E09",
+      "title": "Mr. Plow"
+    },
+    {
+      "episode": "S04E10",
+      "title": "Lisa's First Word"
+    },
+    {
+      "episode": "S04E11",
+      "title": "Homer's Triple Bypass"
+    },
+    {
+      "episode": "S04E12",
+      "title": "Marge vs. the Monorail"
+    },
+    {
+      "episode": "S04E13",
+      "title": "Selma's Choice"
+    },
+    {
+      "episode": "S04E14",
+      "title": "Brother from the Same Planet"
+    },
+    {
+      "episode": "S04E15",
+      "title": "I Love Lisa"
+    },
+    {
+      "episode": "S04E16",
+      "title": "Duffless"
+    },
+    {
+      "episode": "S04E17",
+      "title": "Last Exit to Springfield"
+    },
+    {
+      "episode": "S04E18",
+      "title": "So It's Come to This: A Simpsons Clip Show"
+    },
+    {
+      "episode": "S04E19",
+      "title": "The Front"
+    },
+    {
+      "episode": "S04E20",
+      "title": "Whacking Day"
+    },
+    {
+      "episode": "S04E21",
+      "title": "Marge in Chains"
+    },
+    {
+      "episode": "S04E22",
+      "title": "Krusty Gets Kancelled"
+    }
+  ],
+  "season_5": [
+    {
+      "episode": "S05E01",
+      "title": "Homer's Barbershop Quartet"
+    },
+    {
+      "episode": "S05E02",
+      "title": "Cape Feare"
+    },
+    {
+      "episode": "S05E03",
+      "title": "Homer Goes to College"
+    },
+    {
+      "episode": "S05E04",
+      "title": "Rosebud"
+    },
+    {
+      "episode": "S05E05",
+      "title": "Treehouse of Horror IV"
+    },
+    {
+      "episode": "S05E06",
+      "title": "Marge on the Lam"
+    },
+    {
+      "episode": "S05E07",
+      "title": "Bart's Inner Child"
+    },
+    {
+      "episode": "S05E08",
+      "title": "Boy-Scoutz 'n the Hood"
+    },
+    {
+      "episode": "S05E09",
+      "title": "The Last Temptation of Homer"
+    },
+    {
+      "episode": "S05E10",
+      "title": "$pringfield (Or, How I Learned to Stop Worrying and Love Legalized Gambling)"
+    },
+    {
+      "episode": "S05E11",
+      "title": "Homer the Vigilante"
+    },
+    {
+      "episode": "S05E12",
+      "title": "Bart Gets Famous"
+    },
+    {
+      "episode": "S05E13",
+      "title": "Homer and Apu"
+    },
+    {
+      "episode": "S05E14",
+      "title": "Lisa vs. Malibu Stacy"
+    },
+    {
+      "episode": "S05E15",
+      "title": "Deep Space Homer"
+    },
+    {
+      "episode": "S05E16",
+      "title": "Homer Loves Flanders"
+    },
+    {
+      "episode": "S05E17",
+      "title": "Bart Gets an Elephant"
+    },
+    {
+      "episode": "S05E18",
+      "title": "Burns' Heir"
+    },
+    {
+      "episode": "S05E19",
+      "title": "Sweet Seymour Skinner's Baadasssss Song"
+    },
+    {
+      "episode": "S05E20",
+      "title": "The Boy Who Knew Too Much"
+    },
+    {
+      "episode": "S05E21",
+      "title": "Lady Bouvier's Lover"
+    },
+    {
+      "episode": "S05E22",
+      "title": "Secrets of a Successful Marriage"
+    }
+  ],
+  "season_6": [
+    {
+      "episode": "S06E01",
+      "title": "Bart of Darkness"
+    },
+    {
+      "episode": "S06E02",
+      "title": "Lisa's Rival"
+    },
+    {
+      "episode": "S06E03",
+      "title": "Another Simpsons Clip Show"
+    },
+    {
+      "episode": "S06E04",
+      "title": "Itchy & Scratchy Land"
+    },
+    {
+      "episode": "S06E05",
+      "title": "Sideshow Bob Roberts"
+    },
+    {
+      "episode": "S06E06",
+      "title": "Treehouse of Horror V"
+    },
+    {
+      "episode": "S06E07",
+      "title": "Bart's Girlfriend"
+    },
+    {
+      "episode": "S06E08",
+      "title": "Lisa on Ice"
+    },
+    {
+      "episode": "S06E09",
+      "title": "Homer Badman"
+    },
+    {
+      "episode": "S06E10",
+      "title": "Grandpa vs. Sexual Inadequacy"
+    },
+    {
+      "episode": "S06E11",
+      "title": "Fear of Flying"
+    },
+    {
+      "episode": "S06E12",
+      "title": "Homer the Great"
+    },
+    {
+      "episode": "S06E13",
+      "title": "And Maggie Makes Three"
+    },
+    {
+      "episode": "S06E14",
+      "title": "Bart's Comet"
+    },
+    {
+      "episode": "S06E15",
+      "title": "Homie the Clown"
+    },
+    {
+      "episode": "S06E16",
+      "title": "Bart vs. Australia"
+    },
+    {
+      "episode": "S06E17",
+      "title": "Homer vs. Patty and Selma"
+    },
+    {
+      "episode": "S06E18",
+      "title": "A Star Is Burns"
+    },
+    {
+      "episode": "S06E19",
+      "title": "Lisa's Wedding"
+    },
+    {
+      "episode": "S06E20",
+      "title": "Two Dozen and One Greyhounds"
+    },
+    {
+      "episode": "S06E21",
+      "title": "The PTA Disbands"
+    },
+    {
+      "episode": "S06E22",
+      "title": "Round Springfield"
+    },
+    {
+      "episode": "S06E23",
+      "title": "The Springfield Connection"
+    },
+    {
+      "episode": "S06E24",
+      "title": "Lemon of Troy"
+    },
+    {
+      "episode": "S06E25",
+      "title": "Who Shot Mr. Burns? (Part One)"
+    }
+  ],
+  "season_7": [
+    {
+      "episode": "S07E01",
+      "title": "Who Shot Mr. Burns? (Part Two)"
+    },
+    {
+      "episode": "S07E02",
+      "title": "Radioactive Man"
+    },
+    {
+      "episode": "S07E03",
+      "title": "Home Sweet Homediddly-Dum-Doodily"
+    },
+    {
+      "episode": "S07E04",
+      "title": "Bart Sells His Soul"
+    },
+    {
+      "episode": "S07E05",
+      "title": "Lisa the Vegetarian"
+    },
+    {
+      "episode": "S07E06",
+      "title": "Treehouse of Horror VI"
+    },
+    {
+      "episode": "S07E07",
+      "title": "King-Size Homer"
+    },
+    {
+      "episode": "S07E08",
+      "title": "Mother Simpson"
+    },
+    {
+      "episode": "S07E09",
+      "title": "Sideshow Bob's Last Gleaming"
+    },
+    {
+      "episode": "S07E10",
+      "title": "The Simpsons 138th Episode Spectacular"
+    },
+    {
+      "episode": "S07E11",
+      "title": "Marge Be Not Proud"
+    },
+    {
+      "episode": "S07E12",
+      "title": "Team Homer"
+    },
+    {
+      "episode": "S07E13",
+      "title": "Two Bad Neighbors"
+    },
+    {
+      "episode": "S07E14",
+      "title": "Scenes from the Class Struggle in Springfield"
+    },
+    {
+      "episode": "S07E15",
+      "title": "Bart the Fink"
+    },
+    {
+      "episode": "S07E16",
+      "title": "Lisa the Iconoclast"
+    },
+    {
+      "episode": "S07E17",
+      "title": "Homer the Smithers"
+    },
+    {
+      "episode": "S07E18",
+      "title": "The Day the Violence Died"
+    },
+    {
+      "episode": "S07E19",
+      "title": "A Fish Called Selma"
+    },
+    {
+      "episode": "S07E20",
+      "title": "Bart on the Road"
+    },
+    {
+      "episode": "S07E21",
+      "title": "22 Short Films About Springfield"
+    },
+    {
+      "episode": "S07E22",
+      "title": "Raging Abe Simpson and His Grumbling Grandson in 'The Curse of the Flying Hellfish'"
+    },
+    {
+      "episode": "S07E23",
+      "title": "Much Apu About Nothing"
+    },
+    {
+      "episode": "S07E24",
+      "title": "Homerpalooza"
+    },
+    {
+      "episode": "S07E25",
+      "title": "Summer of 4 Ft. 2"
+    }
+  ],
+  "season_8": [
+    {
+      "episode": "S08E01",
+      "title": "Treehouse of Horror VII"
+    },
+    {
+      "episode": "S08E02",
+      "title": "You Only Move Twice"
+    },
+    {
+      "episode": "S08E03",
+      "title": "The Homer They Fall"
+    },
+    {
+      "episode": "S08E04",
+      "title": "Burns, Baby Burns"
+    },
+    {
+      "episode": "S08E05",
+      "title": "Bart After Dark"
+    },
+    {
+      "episode": "S08E06",
+      "title": "A Milhouse Divided"
+    },
+    {
+      "episode": "S08E07",
+      "title": "Lisa's Date with Density"
+    },
+    {
+      "episode": "S08E08",
+      "title": "Hurricane Neddy"
+    },
+    {
+      "episode": "S08E09",
+      "title": "El Viaje Misterioso de Nuestro Jomer (The Mysterious Voyage of Homer)"
+    },
+    {
+      "episode": "S08E10",
+      "title": "The Springfield Files"
+    },
+    {
+      "episode": "S08E11",
+      "title": "The Twisted World of Marge Simpson"
+    },
+    {
+      "episode": "S08E12",
+      "title": "Mountain of Madness"
+    },
+    {
+      "episode": "S08E13",
+      "title": "Simpsoncalifragilisticexpiala(Annoyed Grunt)cious"
+    },
+    {
+      "episode": "S08E14",
+      "title": "The Itchy & Scratchy & Poochie Show"
+    },
+    {
+      "episode": "S08E15",
+      "title": "Homer’s Phobia"
+    },
+    {
+      "episode": "S08E16",
+      "title": "Brother from Another Series"
+    },
+    {
+      "episode": "S08E17",
+      "title": "My Sister, My Sitter"
+    },
+    {
+      "episode": "S08E18",
+      "title": "Homer vs. the Eighteenth Amendment"
+    },
+    {
+      "episode": "S08E19",
+      "title": "Grade School Confidential"
+    },
+    {
+      "episode": "S08E20",
+      "title": "The Canine Mutiny"
+    },
+    {
+      "episode": "S08E21",
+      "title": "The Old Man and the Lisa"
+    },
+    {
+      "episode": "S08E22",
+      "title": "In Marge We Trust"
+    },
+    {
+      "episode": "S08E23",
+      "title": "Homer’s Enemy"
+    },
+    {
+      "episode": "S08E24",
+      "title": "The Simpsons Spin-Off Showcase"
+    },
+    {
+      "episode": "S08E25",
+      "title": "The Secret War of Lisa Simpson"
+    }
+  ],
+  "season_9": [
+    {
+      "episode": "S09E01",
+      "title": "The City of New York vs. Homer Simpson"
+    },
+    {
+      "episode": "S09E02",
+      "title": "The Principal and the Pauper"
+    },
+    {
+      "episode": "S09E03",
+      "title": "Lisa's Sax"
+    },
+    {
+      "episode": "S09E04",
+      "title": "Treehouse of Horror VIII"
+    },
+    {
+      "episode": "S09E05",
+      "title": "The Cartridge Family"
+    },
+    {
+      "episode": "S09E06",
+      "title": "Bart Star"
+    },
+    {
+      "episode": "S09E07",
+      "title": "The Two Mrs. Nahasapeemapetilons"
+    },
+    {
+      "episode": "S09E08",
+      "title": "Lisa the Skeptic"
+    },
+    {
+      "episode": "S09E09",
+      "title": "Realty Bites"
+    },
+    {
+      "episode": "S09E10",
+      "title": "Miracle on Evergreen Terrace"
+    },
+    {
+      "episode": "S09E11",
+      "title": "All Singing, All Dancing"
+    },
+    {
+      "episode": "S09E12",
+      "title": "Bart Carny"
+    },
+    {
+      "episode": "S09E13",
+      "title": "The Joy of Sect"
+    },
+    {
+      "episode": "S09E14",
+      "title": "Das Bus"
+    },
+    {
+      "episode": "S09E15",
+      "title": "The Last Temptation of Krust"
+    },
+    {
+      "episode": "S09E16",
+      "title": "Dumbbell Indemnity"
+    },
+    {
+      "episode": "S09E17",
+      "title": "Lisa the Simpson"
+    },
+    {
+      "episode": "S09E18",
+      "title": "This Little Wiggy"
+    },
+    {
+      "episode": "S09E19",
+      "title": "Simpson Tide"
+    },
+    {
+      "episode": "S09E20",
+      "title": "The Trouble with Trillions"
+    },
+    {
+      "episode": "S09E21",
+      "title": "Girly Edition"
+    },
+    {
+      "episode": "S09E22",
+      "title": "Trash of the Titans"
+    },
+    {
+      "episode": "S09E23",
+      "title": "King of the Hill"
+    },
+    {
+      "episode": "S09E24",
+      "title": "Lost Our Lisa"
+    },
+    {
+      "episode": "S09E25",
+      "title": "Natural Born Kissers"
+    }
+  ],
+  "season_10": [
+    {
+      "episode": "S10E01",
+      "title": "Lard of the Dance"
+    },
+    {
+      "episode": "S10E02",
+      "title": "The Wizard of Evergreen Terrace"
+    },
+    {
+      "episode": "S10E03",
+      "title": "Bart the Mother"
+    },
+    {
+      "episode": "S10E04",
+      "title": "Treehouse of Horror IX"
+    },
+    {
+      "episode": "S10E05",
+      "title": "When You Dish Upon a Star"
+    },
+    {
+      "episode": "S10E06",
+      "title": "D'oh-in' in the Wind"
+    },
+    {
+      "episode": "S10E07",
+      "title": "Lisa Gets an 'A'"
+    },
+    {
+      "episode": "S10E08",
+      "title": "Homer Simpson in: 'Kidney Trouble'"
+    },
+    {
+      "episode": "S10E09",
+      "title": "Mayored to the Mob"
+    },
+    {
+      "episode": "S10E10",
+      "title": "Viva Ned Flanders"
+    },
+    {
+      "episode": "S10E11",
+      "title": "Wild Barts Can't Be Broken"
+    },
+    {
+      "episode": "S10E12",
+      "title": "Sunday, Cruddy Sunday"
+    },
+    {
+      "episode": "S10E13",
+      "title": "Homer to the Max"
+    },
+    {
+      "episode": "S10E14",
+      "title": "I'm with Cupid"
+    },
+    {
+      "episode": "S10E15",
+      "title": "Marge Simpson in: 'Screaming Yellow Honkers'"
+    },
+    {
+      "episode": "S10E16",
+      "title": "Make Room for Lisa"
+    },
+    {
+      "episode": "S10E17",
+      "title": "Maximum Homerdrive"
+    },
+    {
+      "episode": "S10E18",
+      "title": "Simpsons Bible Stories"
+    },
+    {
+      "episode": "S10E19",
+      "title": "Mom and Pop Art"
+    },
+    {
+      "episode": "S10E20",
+      "title": "The Old Man and the 'C' Student"
+    },
+    {
+      "episode": "S10E21",
+      "title": "Monty Can't Buy Me Love"
+    },
+    {
+      "episode": "S10E22",
+      "title": "They Saved Lisa's Brain"
+    },
+    {
+      "episode": "S10E23",
+      "title": "Thirty Minutes Over Tokyo"
+    }
+  ]
+}
