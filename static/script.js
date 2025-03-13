@@ -55,19 +55,24 @@ async function loadEpisodes() {
     }
 }
 
-document.getElementById('guess').addEventListener('input', async function () {
-    const episodes = await loadEpisodes();
-    const input = this.value.toLowerCase();
-    const suggestions = episodes.filter(episode => episode.toLowerCase().includes(input));
-    const datalist = document.getElementById('episode-suggestions');
-    datalist.innerHTML = '';
-    if (input) {
-        suggestions.forEach(suggestion => {
-            const option = document.createElement('option');
-            option.value = suggestion;
-            datalist.appendChild(option);
-        });
-    }
+let debounceTimeout;
+
+document.getElementById('guess').addEventListener('input', function () {
+    clearTimeout(debounceTimeout);
+    debounceTimeout = setTimeout(async () => {
+        const episodes = await loadEpisodes();
+        const input = this.value.toLowerCase();
+        const suggestions = episodes.filter(episode => episode.toLowerCase().includes(input));
+        const datalist = document.getElementById('episode-suggestions');
+        datalist.innerHTML = '';
+        if (input) {
+            suggestions.forEach(suggestion => {
+                const option = document.createElement('option');
+                option.value = suggestion;
+                datalist.appendChild(option);
+            });
+        }
+    }, 2000); // 2-second debounce delay
 });
 
 document.getElementById('guess-form').addEventListener('submit', async (event) => {
