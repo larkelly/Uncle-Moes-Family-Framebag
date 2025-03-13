@@ -24,7 +24,9 @@ def get_random_frame():
             frame_url = f"https://frinkiac.com/img/{data['Frame']['Episode']}/{data['Frame']['Timestamp']}.jpg"
             return jsonify({
                 'frame_url': frame_url,
-                'episode_title': data['Episode']['Title']
+                'episode_title': data['Episode']['Title'],
+                'season_number': data['Episode']['Season'],
+                'episode_number': data['Episode']['EpisodeNumber']
             })
         else:
             logging.error('Invalid response from Frinkiac API: %s', data)
