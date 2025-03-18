@@ -320,7 +320,7 @@ h2#quiz-subtitle {
     background-color: #f0f0f0;
 }
 
-#guess-form, #quiz-title, #quiz-subtitle, #result, #game-over, #episode-info, #try-again-container {
+#guess-form, #quiz-subtitle, #result, #game-over, #episode-info, #try-again-container {
     display: block;
     position: relative;
     z-index: 1;
@@ -363,4 +363,13 @@ h2#quiz-subtitle {
     text-align: center;
     z-index: 20;
     animation: slideIn 2s forwards;
+}
+
+.dash::before {
+    content: '\2013'; /* Unicode for a standard dash */
+}
+
+.dash {
+    display: inline;
+    content: '\2013'; /* Unicode for a standard dash */
 }

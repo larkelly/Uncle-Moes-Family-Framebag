@@ -3,8 +3,71 @@ let points = 0;
 let currentFrame = 0;
 const totalFrames = 5;
 let lifelineUsed = false;
+let gameOver = false;
+let doublePointsUsed = false;
+
+
+function updateUI() {
+    document.getElementById('attempts').textContent = attempts.toString();
+    document.getElementById('points').textContent = `Points: ${points}`;
+    document.getElementById('current-frame').textContent = `Frame: ${currentFrame + 1} OF ${totalFrames}`;
+    document.getElementById('game-over').classList.add('hidden');
+    document.getElementById('quiz-subtitle').classList.remove('hidden');
+    document.getElementById('guess-form').style.display = 'block';
+    document.getElementById('lifelines').style.display = 'block';
+    document.getElementById('info-container').style.display = 'block';
+    document.getElementById('episode-label').style.display = 'block';
+    document.getElementById('frame').src = '';
+    document.getElementById('you-win-message')?.remove();
+    document.getElementById('you-lose-message')?.remove();
+
+    const messageElement = document.querySelector('.image-container div:last-child');
+    if (messageElement && messageElement.innerHTML.includes('Total Points')) {
+        messageElement.remove();
+    }
+
+    const showQuoteButton = document.getElementById('show-quote');
+    showQuoteButton.style.backgroundColor = '';
+    showQuoteButton.disabled = false;
+
+    const nextFrameButton = document.getElementById('next-frame');
+    nextFrameButton.style.backgroundColor = '#007bff';
+    nextFrameButton.textContent = 'Skip Frame';
+
+    document.getElementById('try-again-container').style.display = 'none';
+    document.getElementById('episode-info').style.display = 'none';
+    document.getElementById('quiz-subtitle').style.display = 'block';
+}
+
+
+function resetGameState() {
+    attempts = 3;
+    points = 0;
+    currentFrame = 0;
+    lifelineUsed = false;
+    gameOver = false;
+    doublePointsUsed = false;
+    updateUI();
+
+    // Remove all messages containing "Total Points" or "Attempts Left"
+    const messages = document.querySelectorAll('.image-container div');
+    messages.forEach(message => {
+        if (message.innerHTML.includes('Total Points') || message.innerHTML.includes('Attempts Left')) {
+            message.remove();
+        }
+    });
+
+    const doublePointsButton = document.getElementById('double-points');
+    doublePointsButton.style.backgroundColor = '#007bff';
+    doublePointsButton.disabled = false;
+
+    fetchRandomFrame();
+}
 
 async function fetchRandomFrame() {
+    const episodeInfo = document.getElementById('episode-info');
+    episodeInfo.classList.add('hidden');
+
     try {
         const response = await fetch('/random-frame');
         const data = await response.json();
@@ -16,22 +79,24 @@ async function fetchRandomFrame() {
             frame.dataset.episodeTitle = data.Episode.Title;
             frame.dataset.seasonNumber = data.Episode.Season;
             frame.dataset.episodeNumber = data.Episode.EpisodeNumber;
+            frame.dataset.subtitles = JSON.stringify(data.Subtitles);
+            frame.dataset.randomContent = data.random_content;
 
             document.getElementById('correct-text').style.display = 'none';
             const resultElement = document.getElementById('result');
             if (resultElement) {
                 resultElement.textContent = '';
-                resultElement.classList.remove('incorrect-text'); // Remove incorrect styling when resetting
+                resultElement.classList.remove('incorrect-text');
             }
-            document.getElementById('guess').value = ''; // Clear the input field
-            document.getElementById('attempts').textContent = attempts.toString(); // Update attempts
+            document.getElementById('guess').value = '';
+            document.getElementById('attempts').textContent = attempts.toString();
 
-            // Show the subtitle and hide other elements
             document.getElementById('quiz-subtitle').classList.remove('hidden');
-            document.getElementById('episode-info').classList.add('hidden');
-            document.getElementById('try-again-container').style.display = 'none'; // Hide the try again button
-            document.getElementById('game-over').classList.add('hidden'); // Hide the game over text
-            document.getElementById('incorrect-animation').style.display = 'none'; // Hide the incorrect animation
+            document.getElementById('try-again-container').style.display = 'none';
+            document.getElementById('game-over').classList.add('hidden');
+            document.getElementById('incorrect-animation').style.display = 'none';
+
+            episodeInfo.classList.add('hidden');
         } else {
             const resultElement = document.getElementById('result');
             if (resultElement) {
@@ -72,7 +137,7 @@ document.getElementById('guess').addEventListener('input', function () {
                 datalist.appendChild(option);
             });
         }
-    }, 2000); // 2-second debounce delay
+    }, 2000);
 });
 
 document.getElementById('guess-form').addEventListener('submit', async (event) => {
@@ -82,7 +147,6 @@ document.getElementById('guess-form').addEventListener('submit', async (event) =
     const seasonNumber = document.getElementById('frame').dataset.seasonNumber;
     const episodeNumber = document.getElementById('frame').dataset.episodeNumber;
 
-    // Extract the episode title from the guess
     const guessTitle = guess.split(' - ')[1];
 
     try {
@@ -94,8 +158,10 @@ document.getElementById('guess-form').addEventListener('submit', async (event) =
             body: JSON.stringify({guess: guessTitle, episode_title: episodeTitle})
         });
         const result = await response.json();
+
         if (result.correct) {
-            points += 10;
+            points += doublePointsUsed ? 20 : 10;
+            document.getElementById('points').textContent = `Points: ${points}`;
             const correctText = document.getElementById('correct-text');
             correctText.style.display = 'block';
             correctText.textContent = 'Correct!!';
@@ -104,46 +170,45 @@ document.getElementById('guess-form').addEventListener('submit', async (event) =
             setTimeout(() => {
                 correctText.style.display = 'none';
                 correctText.classList.remove('slideIn');
-                fetchRandomFrame();
                 currentFrame++;
-                document.getElementById('current-frame').textContent = `Frame: ${currentFrame + 1} OF ${totalFrames}`;
-            }, 2000); // Adjust the timeout to match the animation duration
+                if (currentFrame >= totalFrames) {
+                    endGame(true);
+                } else {
+                    fetchRandomFrame();
+                    document.getElementById('current-frame').textContent = `Frame: ${currentFrame + 1} OF ${totalFrames}`;
+                }
+            }, 2000);
         } else {
             attempts--;
-            document.getElementById('attempts').textContent = attempts.toString(); // Update attempts
+            document.getElementById('attempts').textContent = attempts.toString();
             if (attempts <= 0) {
-                document.getElementById('game-over').classList.remove('hidden');
-                document.getElementById('quiz-title').classList.add('hidden');
-                document.getElementById('quiz-subtitle').classList.add('hidden'); // Hide the subtitle on game over
-                document.getElementById('guess-form').classList.add('hidden');
-                document.getElementById('result').textContent = '';
-
-                // Display episode info and show try again button when game is over
-                document.getElementById('episode-title').textContent = `${episodeTitle}`;
-                document.getElementById('season-episode').textContent = `Season ${seasonNumber}, Episode ${episodeNumber}`;
-                document.getElementById('episode-info').classList.remove('hidden');
-                document.getElementById('try-again-container').style.display = 'block'; // Show the try again button on game over
+                endGame(false);
             } else {
-                // Show the X animation
                 const incorrectAnimation = document.getElementById('incorrect-animation');
                 incorrectAnimation.style.display = 'block';
                 incorrectAnimation.classList.add('showX');
+                document.getElementById('episode-title').textContent = `${episodeTitle}`;
+                document.getElementById('season-episode').textContent = `Season ${seasonNumber}, Episode ${episodeNumber}`;
                 setTimeout(() => {
                     incorrectAnimation.style.display = 'none';
-                    fetchRandomFrame();
-                    currentFrame++;
-                    document.getElementById('current-frame').textContent = `Frame: ${currentFrame + 1} OF ${totalFrames}`;
-                }, 1000); // Hide the X after the animation ends
+                    setTimeout(() => {
+                        document.getElementById('episode-info').classList.add('hidden');
+                        fetchRandomFrame();
+                        currentFrame++;
+                        document.getElementById('episode-title').textContent = ``;
+                        document.getElementById('season-episode').textContent = ``;
+                        document.getElementById('current-frame').textContent = `Frame: ${currentFrame + 1} OF ${totalFrames}`;
+                    }, 1500);
+                }, 1500);
             }
         }
 
-        // Check if the round is over
-        if (currentFrame >= totalFrames) {
-            document.getElementById('game-over').classList.remove('hidden');
-            document.getElementById('result').textContent = `Round over! You scored ${points} points.`;
-            document.getElementById('next-frame').style.display = 'none';
-            document.getElementById('try-again-container').style.display = 'block'; // Show the try again button
+        if (currentFrame >= totalFrames && attempts > 0) {
+            endGame(true);
         }
+
+        // Reset double points after each guess
+        doublePointsUsed = false;
     } catch (error) {
         console.error('Error validating guess:', error);
         document.getElementById('result').textContent = 'Error validating guess';
@@ -161,20 +226,117 @@ document.getElementById('next-frame').addEventListener('click', () => {
     }
 });
 
-document.getElementById('try-again').addEventListener('click', () => {
-    attempts = 3;
-    points = 0;
-    currentFrame = 0;
-    lifelineUsed = false;
-    document.getElementById('attempts').textContent = attempts.toString(); // Update attempts
-    document.getElementById('game-over').classList.add('hidden');
-    document.getElementById('quiz-title').classList.remove('hidden');
-    document.getElementById('quiz-subtitle').classList.remove('hidden'); // Show the subtitle when restarting
-    document.getElementById('guess-form').classList.remove('hidden');
-    document.getElementById('try-again-container').style.display = 'none'; // Hide the try again button when the game restarts
-    document.getElementById('next-frame').style.backgroundColor = '#007bff'; // Reset the button color
-    document.getElementById('next-frame').textContent = 'Skip Frame'; // Reset the button text
-    fetchRandomFrame();
+document.getElementById('show-quote').addEventListener('click', () => {
+    const frame = document.getElementById('frame');
+    const subtitles = frame.dataset.subtitles ? JSON.parse(frame.dataset.subtitles) : [];
+
+    if (subtitles.length > 0) {
+        const concatenatedContent = subtitles.map(subtitle => subtitle.Content).join('\n');
+
+        const hintElement = document.createElement('div');
+        hintElement.textContent = concatenatedContent;
+        hintElement.style.fontFamily = 'SimpsonsFont';
+        hintElement.style.position = 'absolute';
+        hintElement.style.bottom = '10px';
+        hintElement.style.left = '50%';
+        hintElement.style.transform = 'translateX(-50%)';
+        hintElement.style.color = 'white';
+        hintElement.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+        hintElement.style.padding = '5px';
+        hintElement.style.borderRadius = '5px';
+        hintElement.style.whiteSpace = 'pre-line';
+
+        frame.parentElement.appendChild(hintElement);
+
+        setTimeout(() => {
+            hintElement.remove();
+        }, 5000);
+
+        const showQuoteButton = document.getElementById('show-quote');
+        showQuoteButton.style.backgroundColor = 'red';
+        showQuoteButton.disabled = true;
+    }
 });
 
+document.getElementById('double-points').addEventListener('click', () => {
+    if (!doublePointsUsed) {
+        doublePointsUsed = true;
+        const doublePointsButton = document.getElementById('double-points');
+        doublePointsButton.style.backgroundColor = 'red';
+        doublePointsButton.disabled = true;
+    }
+});
+
+function endGame(isWin) {
+    gameOver = true;
+    document.getElementById('quiz-subtitle').style.display = 'none';
+    document.getElementById('guess-form').style.display = 'none';
+    document.getElementById('lifelines').style.display = 'none';
+    document.getElementById('info-container').style.display = 'none';
+    document.getElementById('episode-label').style.display = 'none';
+    document.getElementById('result').textContent = '';
+
+    const episodeTitle = document.getElementById('frame').dataset.episodeTitle;
+    const seasonNumber = document.getElementById('frame').dataset.seasonNumber;
+    const episodeNumber = document.getElementById('frame').dataset.episodeNumber;
+
+    let gameOverMessage = '';
+
+    if (isWin) {
+        document.getElementById('frame').src = '/static/images/winner.png';
+        const youWinMessage = document.createElement('div');
+        youWinMessage.id = 'you-win-message';
+        youWinMessage.textContent = 'You Win!';
+        youWinMessage.style.fontSize = '2em';
+        youWinMessage.style.color = 'green';
+        youWinMessage.style.textAlign = 'center';
+        document.querySelector('.image-container').insertBefore(youWinMessage, document.getElementById('frame'));
+        document.getElementById('episode-info').classList.add('hidden');
+        document.getElementById('episode-title').style.display = 'none';
+        document.getElementById('season-episode').style.display = 'none';
+        document.getElementById('try-again').textContent = 'New Game';
+    } else {
+        document.getElementById('frame').src = '/static/images/loser.jpg';
+        const youLoseMessage = document.createElement('div');
+        youLoseMessage.id = 'you-lose-message';
+        youLoseMessage.textContent = 'You Lose!';
+        youLoseMessage.style.fontSize = '2em';
+        youLoseMessage.style.color = 'red';
+        youLoseMessage.style.textAlign = 'center';
+        document.querySelector('.image-container').insertBefore(youLoseMessage, document.getElementById('frame'));
+        document.getElementById('try-again').textContent = 'Try Again';
+    }
+
+    gameOverMessage += `Total Points: ${points} <br>Attempts Left: ${attempts}`;
+    const messageElement = document.createElement('div');
+    messageElement.innerHTML = gameOverMessage;
+    messageElement.style.textAlign = 'center';
+    document.querySelector('.image-container').appendChild(messageElement);
+
+    document.getElementById('episode-title').textContent = `${episodeTitle}`;
+    document.getElementById('season-episode').textContent = `Season ${seasonNumber}, Episode ${episodeNumber}`;
+    document.getElementById('episode-info').classList.remove('hidden');
+    document.getElementById('try-again-container').style.display = 'block';
+    document.querySelector('.image-container').appendChild(document.getElementById('try-again-container'));
+}
+
+document.getElementById('try-again').addEventListener('click', resetGameState);
+document.getElementById('give-up').addEventListener('click', () => {
+    if (!gameOver) {
+        currentFrame++;
+        attempts--;
+        document.getElementById('current-frame').textContent = `Frame: ${currentFrame + 1} OF ${totalFrames}`;
+        if (attempts <= 0) {
+            endGame(false);
+        } else {
+            fetchRandomFrame();
+        }
+    }
+});
+
+if (currentFrame >= totalFrames) {
+    endGame(true);
+} else if (attempts <= 0) {
+    endGame(false);
+}
 fetchRandomFrame();

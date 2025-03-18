@@ -32,10 +32,9 @@ def get_random_frame():
         response.raise_for_status()  # Check for HTTP errors
         data = response.json()
 
-        logging.debug(data)
-
         # Select a random RepresentativeTimestamp from data['Subtitles']
         random_subtitle = random.choice(data['Subtitles'])
+        random_content = random_subtitle['Content']
         random_timestamp = random_subtitle['RepresentativeTimestamp']
 
         # Form the next API URL using the random timestamp
@@ -45,6 +44,7 @@ def get_random_frame():
         random_frame_response = requests.get(random_frame_from_episode)
         random_frame_response.raise_for_status()  # Check for HTTP errors
         next_data = random_frame_response.json()
+        next_data['random_content'] = random_content
 
         return jsonify(next_data)
     except requests.RequestException as e:
@@ -66,4 +66,4 @@ def validate_guess():
         return jsonify({'error': 'An unexpected error occurred while validating the guess'}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5002)  # Change 5001 to your desired port number
